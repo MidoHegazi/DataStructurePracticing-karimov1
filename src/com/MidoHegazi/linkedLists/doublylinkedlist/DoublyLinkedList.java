@@ -54,6 +54,31 @@ public class DoublyLinkedList {
 		    return tail;
 		}
 
+		public void addNodeInBetween(int index,int value){
+			if(index <= 0){
+					addAsFirstNode(value);
+					return;
+			}
+			if(index >= size){
+				addAsLastNode(value);
+				return;
+			}
+			DoublyNode node = new DoublyNode();
+			DoublyNode temp = head;
+			node.setValue(value);
+			for(int i=0;i<index-1;i++){
+				temp=temp.getNext();
+			}
+			// setting the node after the last node before the index
+			node.setNext(temp.getNext());
+			node.setPrev(temp);
+			temp.getNext().setPrev(node);
+			temp.setNext(node);
+			size++;
+			System.out.println(" node has been inserted successfully!!!");
+
+		}
+
 
 		public void printDLL() {
 				if(head == null){
@@ -69,6 +94,44 @@ public class DoublyLinkedList {
 						node = node.getNext();
 				}
 				System.out.println("\n");
+		}
+
+		public void deleteNode(int index){
+
+			if(index <= 0 ){
+				head=head.getNext();
+				head.setPrev(null);
+				System.out.println("first node has been deleted successfuly ");
+				size--;
+				return;
+			}
+			if(index >= size){
+				tail=tail.getPrev();
+				tail.setNext(null);
+				System.out.println("last node has been deleted successfuly ");
+				size--;
+				return;
+			}
+			DoublyNode temp = head;
+			DoublyNode toDelete= new DoublyNode();
+			for(int i=0;i<index-1;i++){
+				temp=temp.getNext();
+			}
+			DoublyNode node = temp.getNext();
+			toDelete = temp.getNext();
+			temp.setNext(toDelete.getNext());
+			toDelete.getNext().setPrev(temp);
+			toDelete.setPrev(null);
+			toDelete.setNext(null);
+			size--;
+			System.out.println("the list has been deleted successfuly");
+		}
+
+		public void deleteList(){
+			head = null;
+			tail.setPrev(null);
+			System.out.println("list has been deleted successfuly");
+			size=0;
 		}
 
 }
