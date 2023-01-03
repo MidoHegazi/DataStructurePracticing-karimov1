@@ -95,6 +95,21 @@ public class DoublyLinkedList {
 				}
 				System.out.println("\n");
 		}
+		public void printDLLBackward(){
+		if (tail==null){
+			System.out.println("this list is empty!!!");
+			return;
+		}
+		DoublyNode temp = tail;
+		for(int i=size-1;i>=0;i--){
+			System.out.print(temp.getValue());
+			if(i>=1){
+				System.out.print(" ==> ");
+			}
+			temp= temp.getPrev();
+		}
+		System.out.println("\n");
+	}
 
 		public void deleteNode(int index){
 
