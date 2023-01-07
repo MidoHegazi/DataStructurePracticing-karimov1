@@ -17,9 +17,12 @@ public class Main {
 		list.printDLL();
 		list.deleteNode(10);
 		list.printDLL();
+		//finding a value
+		System.out.println(list.findNodeByValue(39));
 		//deleting all elements
 		list.deleteList();
 		list.printDLL();
-		
+
+
 	}
 }

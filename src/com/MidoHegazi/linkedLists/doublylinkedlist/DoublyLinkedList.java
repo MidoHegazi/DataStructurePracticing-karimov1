@@ -78,9 +78,31 @@ public class DoublyLinkedList {
 			System.out.println(" node has been inserted successfully!!!");
 
 		}
+		public boolean findNodeByValue(int nodeValue){
+
+			if (isEmpty()) return false;
+			DoublyNode found = new DoublyNode();
+			DoublyNode temp = head;
+
+			for (int i=0;i<size;i++){
+				if(temp.getValue()==nodeValue){
+					return true;
+				}
+				temp=temp.getNext();
+			}
+			return false;
+		}
+
+	private boolean isEmpty() {
+		if (head == null){
+			System.out.println("this list is empty now values has been inserted yet!!");
+			return true;
+		}
+		return false;
+	}
 
 
-		public void printDLL() {
+	public void printDLL() {
 				if(head == null){
 						System.out.println("the list is Empty!!!");
 						return ;
